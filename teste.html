@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrossel com Cabeçalho</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  /* ==================== CABEÇALHO ==================== */
+  header {
+    width: 100%;
+    background: #1a1a1a;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+  }
+
+  header h1 {
+    font-size: 28px;
+    color: #00d0ff;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+  }
+
+  nav ul li a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .2s;
+  }
+
+  nav ul li a:hover {
+    color: #00d0ff;
+  }
+
+  /* ==================== CARROSSEL ==================== */
+
+  .carousel {
+    width: 90%;
+    max-width: 900px;
+    height: 450px;
+    position: relative;
+    margin: 40px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    background: #000;
+  }
+
+  .carousel input[type="radio"] {
+    display: none;
+  }
+
+  .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slides img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 1;
+  }
+
+  #f1:checked ~ .slides .img1,
+  #f2:checked ~ .slides .img2,
+  #f3:checked ~ .slides .img3 {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  /* Bolinhas */
+  .navigation {
+    position: absolute;
+    width: 100%;
+    bottom: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navigation label {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    opacity: .45;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  #f1:checked ~ .navigation label[for="f1"],
+  #f2:checked ~ .navigation label[for="f2"],
+  #f3:checked ~ .navigation label[for="f3"] {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 600px) {
+    .carousel {
+      height: 280px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== CABEÇALHO ==================== -->
+<header>
+  <h1>AnimeSite</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Início</a></li>
+      <li><a href="#">Animes</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ==================== CARROSSEL ==================== -->
+<div class="carousel">
+
+  <!-- Radios -->
+  <input type="radio" name="fade" id="f1" checked>
+  <input type="radio" name="fade" id="f2">
+  <input type="radio" name="fade" id="f3">
+
+  <!-- Slides -->
+  <div class="slides">
+    <img src="/img/banner_guincho.jpeg" class="img1">
+    <img src="/img/porsche_tcar.jpeg" class="img2">
+    <img src="/img/WhatsApp Image 2025-11-15 at 14.45.13-Photoroom.png" class="img3">
+  </div>
+
+  <!-- Bolinhas -->
+  <div class="navigation">
+    <label for="f1"></label>
+    <label for="f2"></label>
+    <label for="f3"></label>
+  </div>
+
+</div>
+
+</body>
+</html>
